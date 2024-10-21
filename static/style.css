@@ -1,0 +1,53 @@
+.cloud-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cloud {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cloud:hover {
+    background-color: #c3e1e5;
+}
+
+.cloud-close {
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #888;
+}
+
+.cloud-close:hover {
+    color: #555;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
