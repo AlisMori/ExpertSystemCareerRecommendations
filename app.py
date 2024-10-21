@@ -14,31 +14,32 @@ def load_career_data():
 career_data = load_career_data()
 
 
-def find_careers(skills, industries, work_style):
+def find_careers(selected_skills, selected_industries, selected_work_style):
     career_scores = {}
     data = career_data["careers"]
-    for i in data:
-        career = i["name"]
-        skills_list = i["skills"]
-        industries_list = i["industries"]
-        work_style_value = i["work_style"]
-        skill_score = sum([skills_list.get(skill, 0) for skill in skills])
-        work_style_score = 1 if work_style_value in work_style else 0
-        industry_score = sum([1 for industry in industries if industry in industries_list])
+    index = 0
+    for career in data:
+        skills_list = career["skills"]
+        industries_list = career["industries"]
+        work_styles = career["work_style"]
+        skill_score = sum([skills_list.get(skill, 0) for skill in selected_skills])
+        work_style_score = 1 if selected_work_style in work_styles else 0
+        industry_score = sum([1 for industry in selected_industries if industry in industries_list])
 
         total_score = skill_score + work_style_score + industry_score
-        career_scores[career] = total_score
+        career_scores[index] = total_score
+        index += 1
 
     # Return sorted career paths with scores
     sorted_careers = sorted(career_scores.items(), key=lambda x: x[1], reverse=True)
     recommendations = [
         {
-            'career': career,
+            'career': data[indexx]["name"],
             'score': score,
-            'description': career_data[career]['description'],
-            'suggested_education': career_data[career]['education']
+            'description': data[indexx]['description'],
+            'suggested_education': data[indexx]['education']
         }
-        for career, score in sorted_careers
+        for indexx, score in sorted_careers
     ]
     return recommendations
 
