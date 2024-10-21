@@ -52,12 +52,15 @@ def index():
 @app.route('/get_recommendations', methods=['POST'])
 def get_recommendations():
     data = request.json
+    print(f"Received data: {data}")
     skills = data.get('skills', [])
     industries = data.get('industries', [])
     work_style = data.get('work_style', '')
 
     recommendations = find_careers(skills, industries, work_style)
+
     return jsonify({'recommendations': recommendations})
+
 
 
 if __name__ == '__main__':

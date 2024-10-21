@@ -68,38 +68,59 @@ document.addEventListener("DOMContentLoaded", function () {
             work_style: selectedWorkStyle
         };
 
+        // console.log("Request Data:", requestData);
         fetch('/get_recommendations', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(requestData)
         })
-        .then(response => response.json())
-        .then(data => {
-            displayRecommendations(data);
-        })
-        .catch(error => console.error('Error:', error));
+            .then(response => response.json())
+            .then(data => {
+                // console.log("Response Data:", data);
+                displayRecommendations(data.recommendations);
+            })
+            .catch(error => console.error('Error:', error));
     });
 
     // Function to display recommendations
     function displayRecommendations(recommendations) {
-        let recommendationsContainer = document.getElementById('recommendations');
-        recommendationsContainer.innerHTML = '';
+        const recommendationsDiv = document.getElementById('recommendations');
+        recommendationsDiv.innerHTML = '';  // Clear previous results
 
-        if (recommendations.length === 0) {
-            recommendationsContainer.innerHTML = '<p>No career recommendations found.</p>';
-            return;
+        if (Array.isArray(recommendations) && recommendations.length > 0) {
+            recommendations.forEach(recommendation => {
+                // Create a new div for each recommendation
+                const recommendationDiv = document.createElement('div');
+                recommendationDiv.classList.add('recommendation');
+
+                // Create elements for career, score, description, and suggested education
+                const careerName = document.createElement('h3');
+                careerName.textContent = recommendation.career;
+
+                const score = document.createElement('p');
+                score.textContent = `Match score: ${recommendation.score.toFixed(1)}`;
+
+                const description = document.createElement('p');
+                description.textContent = `Description: ${recommendation.description}`;
+
+                const educationList = document.createElement('ul');
+                recommendation.suggested_education.forEach(education => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = education;
+                    educationList.appendChild(listItem);
+                });
+
+                // Append the elements to the recommendationDiv
+                recommendationDiv.appendChild(careerName);
+                recommendationDiv.appendChild(score);
+                recommendationDiv.appendChild(description);
+                recommendationDiv.appendChild(educationList);
+
+                // Append the recommendationDiv to the recommendationsDiv
+                recommendationsDiv.appendChild(recommendationDiv);
+            });
+        } else {
+            recommendationsDiv.textContent = 'No recommendations available.';
         }
-
-        recommendations.forEach(function (career) {
-            let careerDiv = document.createElement('div');
-            careerDiv.classList.add('career-recommendation');
-            careerDiv.innerHTML = `
-                <h3>${career.name}</h3>
-                <p><strong>Work Style:</strong> ${career.workStyle}</p>
-                <p><strong>Description:</strong> ${career.description}</p>
-                <p><strong>Suggested Training:</strong> ${career.training}</p>
-            `;
-            recommendationsContainer.appendChild(careerDiv);
-        });
     }
 });
