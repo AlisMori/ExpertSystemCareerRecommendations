@@ -23,7 +23,7 @@ def find_careers(selected_skills, selected_industries, selected_work_style):
         industries_list = career["industries"]
         work_styles = career["work_style"]
         skill_score = sum([skills_list.get(skill, 0) for skill in selected_skills])
-        work_style_score = 1 if selected_work_style in work_styles else 0
+        work_style_score = sum([1 for style in selected_work_style if style in work_styles])
         industry_score = sum([1 for industry in selected_industries if industry in industries_list])
 
         total_score = skill_score + work_style_score + industry_score

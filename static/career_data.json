@@ -1,4 +1,9 @@
 {
+  "work_styles": [
+    "Remote",
+    "Hybrid",
+    "Office-based"
+  ],
   "skills": [
     "CAD software",
     "Excel",
@@ -418,6 +423,7 @@
         "medical knowledge": 0.9,
         "communication": 0.8,
         "decision making": 0.8,
+        "anatomy knowledge": 0.9,
         "empathy": 0.9
       },
       "education": [
@@ -577,6 +583,7 @@
         "patient care": 0.9,
         "medical knowledge": 0.8,
         "communication": 0.9,
+        "anatomy knowledge": 0.9,
         "critical thinking": 0.8,
         "empathy": 0.9
       },
@@ -786,6 +793,7 @@
       "skills": {
         "animal care": 0.9,
         "diagnosis": 0.9,
+        "anatomy knowledge": 0.9,
         "surgery": 0.8,
         "communication": 0.8,
         "compassion": 0.9

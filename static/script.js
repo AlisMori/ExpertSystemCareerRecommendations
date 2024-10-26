@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let skillsList = [];
     let industriesList = [];
+    let workStyleList = [];
 
     // Fetch the career data from the JSON file
     fetch('/static/career_data.json')
@@ -8,9 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             skillsList = data.skills;
             industriesList = data.industries;
+            workStyleList = data.work_styles;
 
             initAutocomplete(document.getElementById('skills-input'), skillsList, 'skills-input-selected');
             initAutocomplete(document.getElementById('industries-input'), industriesList, 'industries-input-selected');
+            initAutocomplete(document.getElementById('work-styles-input'), workStyleList, 'work-styles-input-selected');
         })
         .catch(error => console.error('Error fetching career data:', error));
 
@@ -60,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let selectedSkills = Array.from(document.querySelectorAll('#skills-input-selected .cloud')).map(cloud => cloud.textContent.replace('×', '').trim());
         let selectedIndustries = Array.from(document.querySelectorAll('#industries-input-selected .cloud')).map(cloud => cloud.textContent.replace('×', '').trim());
-        let selectedWorkStyle = document.getElementById('work-style').value;
+        let selectedWorkStyle = Array.from(document.querySelectorAll('#work-styles-input-selected .cloud')).map(cloud => cloud.textContent.replace('×', '').trim());
 
         let requestData = {
             skills: selectedSkills,
@@ -103,6 +106,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const description = document.createElement('p');
                 description.textContent = `Description: ${recommendation.description}`;
 
+                const education = document.createElement('p');
+                education.textContent = 'You should consider education in following areas:'
+
                 const educationList = document.createElement('ul');
                 recommendation.suggested_education.forEach(education => {
                     const listItem = document.createElement('li');
@@ -114,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 recommendationDiv.appendChild(careerName);
                 recommendationDiv.appendChild(score);
                 recommendationDiv.appendChild(description);
+                recommendationDiv.appendChild(education);
                 recommendationDiv.appendChild(educationList);
 
                 // Append the recommendationDiv to the recommendationsDiv

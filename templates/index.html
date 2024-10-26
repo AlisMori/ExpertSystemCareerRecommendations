@@ -22,12 +22,10 @@
             <div id="industries-input-selected" class="cloud-container"></div>
 
 
-            <label for="work-style">Preferred Work Style:</label>
-            <select id="work-style">
-                <option value="remote">Remote</option>
-                <option value="hybrid">Hybrid</option>
-                <option value="office">Office-based</option>
-            </select>
+            <label for="work-styles-input">Preferred Work Style:</label>
+            <input type="text" id="work-styles-input" placeholder="Enter preferred work style(s)" autocomplete="off">
+            <div id="work-styles-suggestions" class="suggestions"></div>
+            <div id="work-styles-input-selected" class="cloud-container"></div>
 
             <button type="submit">Get Recommendations</button>
         </form>
