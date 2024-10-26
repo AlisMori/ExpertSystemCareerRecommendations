@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error('Error fetching career data:', error));
 
+    // Track selected items
+    let selectedItems = new Set();
+
     // Function to initialize autocomplete
     function initAutocomplete(input, dataList, cloudContainerId) {
         input.addEventListener('input', function () {
@@ -26,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!inputValue) return false;
 
-            let matchingData = dataList.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()));
+            let matchingData = dataList.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()) && !selectedItems.has(item));
             matchingData.forEach(function (item) {
                 let suggestionItem = document.createElement('div');
                 suggestionItem.classList.add('suggestion-item');
@@ -41,10 +44,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 suggestionBox.appendChild(suggestionItem);
             });
         });
+        // Prevent 'Enter' key from triggering any unintended action
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault(); // Prevent form submission or any default action
+            }
+        });
+
     }
 
     // Function to add selected items as clouds
     function addSelectedItem(containerId, item) {
+
+        // Check if item is already selected
+        if (selectedItems.has(item)) return;
+        // Add item to selectedItems set
+        selectedItems.add(item);
+
         let selectedContainer = document.getElementById(containerId);
         let cloud = document.createElement('span');
         cloud.classList.add('cloud');
