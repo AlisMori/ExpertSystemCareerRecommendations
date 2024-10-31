@@ -87,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
             work_style: selectedWorkStyle
         };
 
-        // console.log("Request Data:", requestData);
         fetch('/get_recommendations', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -95,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
             .then(response => response.json())
             .then(data => {
-                // console.log("Response Data:", data);
                 displayRecommendations(data.recommendations);
             })
             .catch(error => console.error('Error:', error));
@@ -146,4 +144,31 @@ document.addEventListener("DOMContentLoaded", function () {
             recommendationsDiv.textContent = 'No recommendations available.';
         }
     }
+
+    document.getElementById('reset').addEventListener('click', resetForm);
+
+    function resetForm() {
+        // Clear input fields
+        document.getElementById('skills-input').value = '';
+        document.getElementById('industries-input').value = '';
+        document.getElementById('work-styles-input').value = '';
+
+        // Clear suggestions
+        document.getElementById('skills-suggestions').innerHTML = '';
+        document.getElementById('industries-suggestions').innerHTML = '';
+        document.getElementById('work-styles-suggestions').innerHTML = '';
+
+        // Clear selected tags (clouds)
+        document.getElementById('skills-input-selected').innerHTML = '';
+        document.getElementById('industries-input-selected').innerHTML = '';
+        document.getElementById('work-styles-input-selected').innerHTML = '';
+
+        // Clear recommendations
+        document.getElementById('recommendations').innerHTML = '';
+
+        // Clear set tracking selected items
+        selectedItems.clear();
+
+    }
+
 });
