@@ -1,6 +1,6 @@
 import json
+
 from flask import Flask, request, jsonify, render_template
-from fuzzywuzzy import fuzz
 
 app = Flask(__name__)
 
@@ -25,9 +25,11 @@ def find_careers(selected_skills, selected_industries, selected_work_style):
         skill_score = sum([skills_list.get(skill, 0) for skill in selected_skills])
         work_style_score = sum([1 for style in selected_work_style if style in work_styles])
         industry_score = sum([1 for industry in selected_industries if industry in industries_list])
-
-        total_score = skill_score + work_style_score + industry_score
-        career_scores[index] = total_score
+        max_score = sum(1 if skills_list.get(skill, 0) != 0 else 0 for skill in selected_skills)
+        if (work_style_score > 0 or len(selected_work_style) == 0) and (
+                industry_score > 0 or len(selected_industries) == 0) and max_score != 0:
+            total_score = (skill_score / max_score) * 5
+            career_scores[index] = total_score
         index += 1
 
     # Return sorted career paths with scores
@@ -52,15 +54,13 @@ def index():
 @app.route('/get_recommendations', methods=['POST'])
 def get_recommendations():
     data = request.json
-    print(f"Received data: {data}")
     skills = data.get('skills', [])
     industries = data.get('industries', [])
-    work_style = data.get('work_style', '')
+    work_style = data.get('work_style', [])
 
     recommendations = find_careers(skills, industries, work_style)
 
     return jsonify({'recommendations': recommendations})
-
 
 
 if __name__ == '__main__':
