@@ -1,13 +1,14 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f4f4;
+    background-image: linear-gradient(lightgray, lightblue);
     padding: 20px;
+    background-attachment: fixed;
 }
 
 .container {
     width: 50%;
     margin: auto;
-    background-color: #fff;
+    background-color: whitesmoke;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -22,8 +23,9 @@ body {
 }
 
 .cloud {
-    background-color: #d1ecf1;
-    border: 1px solid #bee5eb;
+    background-color: dodgerblue;
+    border: 1px solid dodgerblue;
+    color: white;
     padding: 5px 10px;
     border-radius: 15px;
     display: inline-flex;
@@ -32,7 +34,7 @@ body {
 }
 
 .cloud:hover {
-    background-color: #c3e1e5;
+    background-color: darkgray;
 }
 
 .cloud-close {
@@ -57,7 +59,7 @@ input[type="text"], select {
 
 .suggestions {
     position: absolute;
-    background-color: #ffffff;
+    background-color: ghostwhite;
     border: 1px solid #ddd;
     width: 47%;
     box-sizing: border-box;
@@ -74,7 +76,7 @@ input[type="text"], select {
 }
 
 .suggestion-item:hover {
-    background-color: #f0f0f0;
+    background-color: #C7CCDB;
 }
 
 .suggestion-item:last-child {
@@ -83,13 +85,17 @@ input[type="text"], select {
 
 button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: dodgerblue;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+button:hover, #reset:hover {
+    background-color: darkslateblue;
+}
+
+#reset {
+    background-color: darkblue;
 }
