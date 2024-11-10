@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="775ecd7e-27f7-4667-bc45-7004da38596b" name="Changes" comment="Add a Reset button">
+    <list default="true" id="775ecd7e-27f7-4667-bc45-7004da38596b" name="Changes" comment="Small design changes">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/career_data.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/career_data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -59,6 +58,7 @@
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
     &quot;Python.app.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.testing.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -104,7 +104,9 @@
       <workItem from="1730115345343" duration="11000" />
       <workItem from="1730359941989" duration="7857000" />
       <workItem from="1730617136823" duration="7000" />
-      <workItem from="1730782832195" duration="1353000" />
+      <workItem from="1730782832195" duration="4439000" />
+      <workItem from="1730966085436" duration="150000" />
+      <workItem from="1731230907930" duration="2148000" />
     </task>
     <task id="LOCAL-00001" summary="Version 1 of web application for Expert System">
       <option name="closed" value="true" />
@@ -146,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730365480657</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Small design changes">
+      <option name="closed" value="true" />
+      <created>1730784674588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730784674588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,10 +185,12 @@
     <MESSAGE value="Fixed Get Recommendations button" />
     <MESSAGE value="Updated career recommendation logic" />
     <MESSAGE value="Add a Reset button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add a Reset button" />
+    <MESSAGE value="Small design changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small design changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ExpertSystem$test.coverage" NAME="test Coverage Results" MODIFIED="1729523902830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/templates" />
-    <SUITE FILE_PATH="coverage/ExpertSystem$app.coverage" NAME="app Coverage Results" MODIFIED="1730784386338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ExpertSystem$app.coverage" NAME="app Coverage Results" MODIFIED="1730784587633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ExpertSystem$testing.coverage" NAME="testing Coverage Results" MODIFIED="1730839257413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
